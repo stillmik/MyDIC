@@ -2,25 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78e68d32-363e-4723-89f4-b4fcfb9a31d9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/annotations/Autowired.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/annotations/Bean.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/annotations/PostConstruct.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/annotations/PreDestroy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/annotations/Service.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/config/BaseSubConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/models/ServiceDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/services/ServicesScanningService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/services/ServicesScanningServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/utils/ServiceDetailsConstructComparator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/MagicInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/MagicInjector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/constants/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/constants/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/enums/DirectoryType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/enums/DirectoryType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/exceptions/ClassLocationException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/exceptions/ClassLocationException.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/models/Directory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/models/Directory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/services/ClassLocator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/services/ClassLocator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/services/ClassLocatorForDirectory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/services/ClassLocatorForDirectory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/services/ClassLocatorForJarFiles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/services/ClassLocatorForJarFiles.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/services/DirectoryResolveImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/services/DirectoryResolveImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/services/DirectoryResolver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/services/DirectoryResolver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/config/BaseSubConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/config/BaseSubConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/config/MagicConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/config/MagicConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/config/configurations/CustomAnnotationsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/config/configurations/CustomAnnotationsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/MagicInjector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/demo/ioc/MagicInjector.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/config/MagicConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/demo/ioc/config/MagicConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/services/ClassLocatorForJarFiles.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/demo/ioc/services/ClassLocatorForJarFiles.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,8 +25,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="AnnotationType" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>

@@ -18,6 +18,15 @@ public class MagicInjector {
 
     public static void run(Class<?> startupClass, MagicConfig magicConfig){
 
+       /*int startPoints =100;
+        double multiplier =1.036188;
+        double total = 0;
+        for(int i=1;i<42*3;i++){
+            total += startPoints;
+            System.out.println("lvl: " + i + " pts: " + startPoints + " total: " + total);
+            startPoints*=multiplier;
+        }*/
+
         Directory directory = new DirectoryResolveImpl().resolveDirectory(startupClass);
         ClassLocator classLocator;
 
