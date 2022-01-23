@@ -1,10 +1,15 @@
 package com.demo.ioc;
 
 import com.demo.ioc.config.MagicConfig;
+import com.demo.ioc.enums.DirectoryType;
+import com.demo.ioc.models.Directory;
+import com.demo.ioc.services.*;
+
+import java.util.Set;
 
 public class MagicInjector {
     public static void main(String[] args) {
-
+        run(MagicInjector.class);
     }
 
     public static void run(Class<?> startupClass){
@@ -13,5 +18,18 @@ public class MagicInjector {
 
     public static void run(Class<?> startupClass, MagicConfig magicConfig){
 
+        Directory directory = new DirectoryResolveImpl().resolveDirectory(startupClass);
+        ClassLocator classLocator;
+
+        if(directory.getDirectoryType()== DirectoryType.JAR_FILE) {
+            classLocator = new ClassLocatorForJarFiles();
+        }else {
+            classLocator = new ClassLocatorForDirectory();
+        }
+
+        Set<Class<?>> classes = classLocator.locateClasses(directory.getDirectory());
+
+        System.out.println("Dir is: ");
+        System.out.println(classes);
     }
 }

@@ -1,4 +1,5 @@
 package com.demo.ioc.enums;
 
-public class DirectoryType {
+public enum DirectoryType {
+    DIRECTORY, JAR_FILE
 }
