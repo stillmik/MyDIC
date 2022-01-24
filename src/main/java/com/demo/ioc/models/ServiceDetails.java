@@ -22,6 +22,17 @@ public class ServiceDetails<T> {
         dependantServices = new ArrayList<>();
     }
 
+    public ServiceDetails(Class<T> serviceType, Annotation annotation, Constructor<T> targetConstructor, Method postConstructorMethod, Method preDestroyMethod,Method[] beans){
+
+        this();
+        setAnnotation(annotation);
+        setServiceType(serviceType);
+        setTargetConstructor(targetConstructor);
+        setPreDestroyMethod(preDestroyMethod);
+        setPostConstructorMethod(postConstructorMethod);
+        setBeans(beans);
+    }
+
     public Class<T> getServiceType() {
         return serviceType;
     }
@@ -50,8 +61,8 @@ public class ServiceDetails<T> {
         return instance;
     }
 
-    public void setInstance(T instance) {
-        this.instance = instance;
+    public void setInstance(Object instance) {
+        this.instance = (T)instance;
     }
 
     public Method getPostConstructorMethod() {

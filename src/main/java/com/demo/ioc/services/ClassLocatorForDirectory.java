@@ -17,7 +17,7 @@ public class ClassLocatorForDirectory implements ClassLocator {
 
     @Override
     public Set<Class<?>> locateClasses(String directory) throws ClassLocationException {
-        this.locatedClasses.clear();
+        locatedClasses.clear();
 
         File file = new File(directory);
 
@@ -27,7 +27,7 @@ public class ClassLocatorForDirectory implements ClassLocator {
 
         for(File innerFile: Objects.requireNonNull(file.listFiles())){
             try {
-                this.scanDir(innerFile,"");
+                scanDir(innerFile,"");
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
@@ -42,7 +42,7 @@ public class ClassLocatorForDirectory implements ClassLocator {
 
             packageName += file.getName() + ".";
             for (File innerFile : Objects.requireNonNull(file.listFiles())) {
-                this.scanDir(innerFile,packageName);
+                scanDir(innerFile,packageName);
             }
 
         }else {
@@ -52,7 +52,7 @@ public class ClassLocatorForDirectory implements ClassLocator {
 
             final String className = packageName + file.getName().replace(".class","");
 
-            this.locatedClasses.add(Class.forName(className));
+            locatedClasses.add(Class.forName(className));
         }
     }
 }

@@ -2,19 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78e68d32-363e-4723-89f4-b4fcfb9a31d9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/models/ServiceDetails.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/services/ServicesScanningService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/services/ServicesScanningServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/utils/ServiceDetailsConstructComparator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/config/configurations/InstantiationConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/exceptions/BeanInstantiationException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/exceptions/PostConstructException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/exceptions/PreDestroyExecutionException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/exceptions/ServiceInstantiationException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/models/ServiceBeanDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/services/ObjectInstantiationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/services/ObjectInstantiationServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/tests/OtherService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/tests/TestServiceOne.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/tests/TestServiceTwo.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/MagicInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/MagicInjector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/config/BaseSubConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/config/BaseSubConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/config/MagicConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/config/MagicConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/config/configurations/CustomAnnotationsConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/config/configurations/CustomAnnotationsConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/constants/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/constants/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/models/ServiceDetails.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/models/ServiceDetails.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/services/ClassLocatorForDirectory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/services/ClassLocatorForDirectory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/services/DirectoryResolveImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/services/DirectoryResolveImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/services/ServicesScanningServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/services/ServicesScanningServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/MagicInjector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/demo/ioc/MagicInjector.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/config/MagicConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/demo/ioc/config/MagicConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/services/ClassLocatorForJarFiles.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/demo/ioc/services/ClassLocatorForJarFiles.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/constants/Constants.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/demo/ioc/constants/Constants.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -54,7 +61,7 @@
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="Shelf.Project.Settings" />

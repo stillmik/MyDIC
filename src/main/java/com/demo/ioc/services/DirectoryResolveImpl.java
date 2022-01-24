@@ -9,9 +9,9 @@ public class DirectoryResolveImpl implements DirectoryResolver{
 
     @Override
     public Directory resolveDirectory(Class<?> startupClass) {
-        final String directory = this.getDirectory(startupClass);
+        final String directory = getDirectory(startupClass);
 
-        return  new Directory(directory,this.getDirectoryType(directory));
+        return  new Directory(directory,getDirectoryType(directory));
     }
 
     private String getDirectory(Class<?> cls){
