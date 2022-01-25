@@ -8,7 +8,7 @@ public class InstantiationConfiguration extends BaseSubConfig {
 
     private int MAX_ALLOWED_ITERATIONS;
 
-    protected InstantiationConfiguration(MagicConfig parentConfig) {
+    public InstantiationConfiguration(MagicConfig parentConfig) {
         super(parentConfig);
         this.MAX_ALLOWED_ITERATIONS = Constants.MAX_NUMBER_OF_INSTANTIATION_CONFIGURATIONS;
     }
@@ -21,4 +21,5 @@ public class InstantiationConfiguration extends BaseSubConfig {
     public int getMaxAllowedIterations(){
         return this.MAX_ALLOWED_ITERATIONS;
     }
+
 }

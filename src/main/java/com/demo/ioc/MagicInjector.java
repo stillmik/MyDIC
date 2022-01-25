@@ -6,6 +6,7 @@ import com.demo.ioc.models.Directory;
 import com.demo.ioc.models.ServiceDetails;
 import com.demo.ioc.services.*;
 
+import java.util.List;
 import java.util.Set;
 
 public class MagicInjector {
@@ -29,12 +30,13 @@ public class MagicInjector {
             startPoints*=multiplier;
         }*/
 
-       ServicesScanningService scanningService = new ServicesScanningServiceImpl(magicConfig.annotations());
+        ServicesScanningService scanningService = new ServicesScanningServiceImpl(magicConfig.annotations());
+        ObjectInstantiationService objectInstantiationService = new ObjectInstantiationServiceImpl();
+        ServicesInstantiationService instantiationService = new ServicesInstantiationServiceImpl(magicConfig.getInstantiations(), objectInstantiationService);
 
         Directory directory = new DirectoryResolveImpl().resolveDirectory(startupClass);
-        ClassLocator classLocator;
-
         System.out.println(directory.getDirectory());
+        ClassLocator classLocator;
 
         if(directory.getDirectoryType()== DirectoryType.JAR_FILE) {
             classLocator = new ClassLocatorForJarFiles();
@@ -44,7 +46,8 @@ public class MagicInjector {
 
         Set<Class<?>> locatedClasses = classLocator.locateClasses(directory.getDirectory());
 
-        Set<ServiceDetails<?>> serviceDetails = scanningService.mapServices(locatedClasses);
-        System.out.println(serviceDetails);
+        Set<ServiceDetails<?>> mappedServices = scanningService.mapServices(locatedClasses);
+        List<ServiceDetails<?>> serviceDetails = instantiationService.instantiateServicesAndBeans(mappedServices);
+
     }
 }

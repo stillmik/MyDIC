@@ -9,5 +9,5 @@ public class Constants {
 
     public static final Class<Service> DEFAULT_LOADED_ANNOTATION = Service.class;
 
-    public static final int MAX_NUMBER_OF_INSTANTIATION_CONFIGURATIONS = 100_000;
+    public static final int MAX_NUMBER_OF_INSTANTIATION_CONFIGURATIONS = 100000;
 }
