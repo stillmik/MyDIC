@@ -4,19 +4,19 @@ import com.demo.ioc.exceptions.BeanInstantiationException;
 import com.demo.ioc.exceptions.PostConstructException;
 import com.demo.ioc.exceptions.PreDestroyExecutionException;
 import com.demo.ioc.exceptions.ServiceInstantiationException;
-import com.demo.ioc.models.ServiceBeanDetails;
-import com.demo.ioc.models.ServiceDetails;
+import com.demo.ioc.models.ServiceBeanInf;
+import com.demo.ioc.models.ServiceInf;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-public class ObjectInstantiationServiceImpl implements ObjectInstantiationService {
+public class ObjectInstanceMakerImpl implements ObjectInstanceMaker {
     private static final String INVALID_PARAMETERS_COUNT = "invalid parameters count";
 
     @Override
-    public void createInstance(ServiceDetails<?> serviceDetails, Object... constructorParams) throws ServiceInstantiationException {
-        Constructor<?> targetConstructor = serviceDetails.getTargetConstructor();
+    public void createInstance(ServiceInf<?> serviceInf, Object... constructorParams) throws ServiceInstantiationException {
+        Constructor<?> targetConstructor = serviceInf.getTargetConstructor();
 
         if(constructorParams.length!= targetConstructor.getParameterCount()){
             throw new ServiceInstantiationException(INVALID_PARAMETERS_COUNT);
@@ -24,15 +24,15 @@ public class ObjectInstantiationServiceImpl implements ObjectInstantiationServic
 
         try {
             Object instance = targetConstructor.newInstance(constructorParams);
-            serviceDetails.setInstance(instance);
-            invokePostConstruct(serviceDetails);
+            serviceInf.setInstance(instance);
+            invokePostConstruct(serviceInf);
 
         } catch (IllegalAccessException | InvocationTargetException | InstantiationException e) {
             throw new ServiceInstantiationException(e.getMessage(),e);
         }
     }
 
-    private void invokePostConstruct(ServiceDetails<?> serviceDetails) throws PostConstructException{
+    private void invokePostConstruct(ServiceInf<?> serviceDetails) throws PostConstructException{
         if(serviceDetails.getPostConstructorMethod()==null){
             return;
         }
@@ -45,27 +45,27 @@ public class ObjectInstantiationServiceImpl implements ObjectInstantiationServic
     }
 
     @Override
-    public void createBeanInstance(ServiceBeanDetails<?> serviceBeanDetails) throws BeanInstantiationException {
-        Method originMethod = serviceBeanDetails.getOriginMethod();
-        Object rootInstance = serviceBeanDetails.getRootService().getInstance();
+    public void createBeanInstance(ServiceBeanInf<?> serviceBeanInf) throws BeanInstantiationException {
+        Method originMethod = serviceBeanInf.getOriginMethod();
+        Object rootInstance = serviceBeanInf.getRootService().getInstance();
 
         try {
             Object instance= originMethod.invoke(rootInstance);
-            serviceBeanDetails.setInstance(instance);
+            serviceBeanInf.setInstance(instance);
         } catch (IllegalAccessException | InvocationTargetException e) {
             throw new BeanInstantiationException(e.getMessage(),e);
         }
     }
 
     @Override
-    public void destroyInstance(ServiceDetails<?> serviceDetails) throws PreDestroyExecutionException {
-        if(serviceDetails.getPreDestroyMethod()!=null){
+    public void destroyInstance(ServiceInf<?> serviceInf) throws PreDestroyExecutionException {
+        if(serviceInf.getPreDestroyMethod()!=null){
             try {
-                serviceDetails.getPreDestroyMethod().invoke(serviceDetails.getInstance());
+                serviceInf.getPreDestroyMethod().invoke(serviceInf.getInstance());
             } catch (IllegalAccessException | InvocationTargetException e) {
                 throw new PreDestroyExecutionException(e.getMessage(),e);
             }
         }
-        serviceDetails.setInstance(null);
+        serviceInf.setInstance(null);
     }
 }

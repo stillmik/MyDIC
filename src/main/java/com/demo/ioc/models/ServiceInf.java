@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class ServiceDetails<T> {
+public class ServiceInf<T> {
 
     private Class<T> serviceType;
     private Annotation annotation;
@@ -15,14 +15,14 @@ public class ServiceDetails<T> {
     private T instance;
     private Method postConstructorMethod;
     private Method preDestroyMethod;
-    private Method[] beans;
-    private final List<ServiceDetails<?>> dependantServices;
+    private Method[] beanMethods;
+    private final List<ServiceInf<?>> dependantServices;
 
-    public ServiceDetails() {
+    public ServiceInf() {
         dependantServices = new ArrayList<>();
     }
 
-    public ServiceDetails(Class<T> serviceType, Annotation annotation, Constructor<T> targetConstructor, Method postConstructorMethod, Method preDestroyMethod,Method[] beans){
+    public ServiceInf(Class<T> serviceType, Annotation annotation, Constructor<T> targetConstructor, Method postConstructorMethod, Method preDestroyMethod, Method[] beanMethods){
 
         this();
         setAnnotation(annotation);
@@ -30,7 +30,7 @@ public class ServiceDetails<T> {
         setTargetConstructor(targetConstructor);
         setPreDestroyMethod(preDestroyMethod);
         setPostConstructorMethod(postConstructorMethod);
-        setBeans(beans);
+        setBeanMethods(beanMethods);
     }
 
     public Class<T> getServiceType() {
@@ -81,19 +81,19 @@ public class ServiceDetails<T> {
         this.preDestroyMethod = preDestroyMethod;
     }
 
-    public Method[] getBeans() {
-        return beans;
+    public Method[] getBeanMethods() {
+        return beanMethods;
     }
 
-    public void setBeans(Method[] beans) {
-        this.beans = beans;
+    public void setBeanMethods(Method[] beanMethods) {
+        this.beanMethods = beanMethods;
     }
 
-    public List<ServiceDetails<?>> getDependantServices() {
+    public List<ServiceInf<?>> getDependantServices() {
         return Collections.unmodifiableList(dependantServices);
     }
 
-    public void addDependantService(ServiceDetails<?> serviceDetails) {
+    public void addDependantService(ServiceInf<?> serviceDetails) {
         dependantServices.add(serviceDetails);
     }
 

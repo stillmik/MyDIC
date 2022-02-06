@@ -1,8 +1,8 @@
 package com.demo.ioc.services;
 
-import com.demo.ioc.models.Directory;
+import com.demo.ioc.models.DirectoryInf;
 
 public interface DirectoryResolver {
 
-    Directory resolveDirectory(Class<?> startupClass);
+    DirectoryInf resolveDirectory(Class<?> startupClass);
 }

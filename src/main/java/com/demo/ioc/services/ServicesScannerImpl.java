@@ -2,7 +2,7 @@ package com.demo.ioc.services;
 
 import com.demo.ioc.annotations.*;
 import com.demo.ioc.config.configurations.CustomAnnotationsConfig;
-import com.demo.ioc.models.ServiceDetails;
+import com.demo.ioc.models.ServiceInf;
 import com.demo.ioc.utils.ServiceDetailsConstructComparator;
 
 import java.lang.annotation.Annotation;
@@ -13,20 +13,20 @@ import java.util.LinkedHashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public class ServicesScanningServiceImpl implements ServicesScanningService {
+public class ServicesScannerImpl implements ServicesScanner {
 
-    private final CustomAnnotationsConfig config;
+    private final CustomAnnotationsConfig customAnnotationsConfig;
 
-    public ServicesScanningServiceImpl(CustomAnnotationsConfig config) {
-        this.config = config;
+    public ServicesScannerImpl(CustomAnnotationsConfig customAnnotationsConfig) {
+        this.customAnnotationsConfig = customAnnotationsConfig;
         init();
     }
 
     @Override
-    public Set<ServiceDetails<?>> mapServices(Set<Class<?>> locatedClasses) {
+    public Set<ServiceInf<?>> mapServices(Set<Class<?>> locatedClasses) {
 
-        final Set<ServiceDetails<?>> serviceDetailsStorage = new HashSet<>();
-        final Set<Class<? extends Annotation>> customServiceAnnotations = config.getCustomServiceAnnotations();
+        final Set<ServiceInf<?>> serviceDetailsStorage = new HashSet<>();
+        final Set<Class<? extends Annotation>> customServiceAnnotations = customAnnotationsConfig.getCustomServiceAnnotations();
 
         for (Class<?> cls : locatedClasses) {
             if (cls.isInterface()) {
@@ -34,15 +34,18 @@ public class ServicesScanningServiceImpl implements ServicesScanningService {
             }
 
             for (Annotation annotation : cls.getAnnotations()) {
-                if (customServiceAnnotations.contains(annotation)) {
-                    ServiceDetails serviceDetails = new ServiceDetails(
+                if (customServiceAnnotations.contains(annotation.annotationType())) {
+                    ServiceInf<?> serviceDetails = new ServiceInf(
                             cls,
                             annotation,
                             findSuitableConstructor(cls),
                             findVoidMethodWithZeroParamsAndAnnotations(PostConstruct.class, cls),
                             findVoidMethodWithZeroParamsAndAnnotations(PreDestroy.class, cls),
-                            findBeans(cls)
+                            findBeanMethods(cls)
                     );
+
+                    serviceDetailsStorage.add(serviceDetails);
+                    break;
                 }
             }
         }
@@ -74,17 +77,17 @@ public class ServicesScanningServiceImpl implements ServicesScanningService {
         return null;
     }
 
-    private Method[] findBeans(Class<?> cls) {
-        Set<Class<? extends Annotation>> customBeanAnnotations = config.getCustomBeanAnnotations();
+    private Method[] findBeanMethods(Class<?> cls) {
+        Set<Class<? extends Annotation>> customBeanAnnotations = customAnnotationsConfig.getCustomBeanAnnotations();
         Set<Method> beanMethods = new HashSet<>();
 
         for (Method method : cls.getDeclaredMethods()) {
-            if(method.getParameterCount()!=0 || method.getReturnType() ==void.class || method.getReturnType()==Void.class){
+            if (method.getParameterCount() != 0 || method.getReturnType() == void.class || method.getReturnType() == Void.class) {
                 continue;
             }
 
-            for(Class<? extends Annotation> beanAnnotation: customBeanAnnotations){
-                if(method.isAnnotationPresent(beanAnnotation)){
+            for (Class<? extends Annotation> beanAnnotation : customBeanAnnotations) {
+                if (method.isAnnotationPresent(beanAnnotation)) {
                     beanMethods.add(method);
                 }
             }
@@ -94,7 +97,7 @@ public class ServicesScanningServiceImpl implements ServicesScanningService {
     }
 
     private void init() {
-        config.getCustomBeanAnnotations().add(Bean.class);
-        config.getCustomServiceAnnotations().add(Service.class);
+        customAnnotationsConfig.getCustomBeanAnnotations().add(Bean.class);
+        customAnnotationsConfig.getCustomServiceAnnotations().add(Service.class);
     }
 }

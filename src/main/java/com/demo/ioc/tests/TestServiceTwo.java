@@ -11,14 +11,14 @@ public class TestServiceTwo {
     //private final OtherService otherService;
 
     @Autowired
-    public TestServiceTwo(TestServiceOne testServiceOne/*, OtherService otherService*/){
+    public TestServiceTwo(TestServiceOne testServiceOne){
         this.testServiceOne = testServiceOne;
         //this.otherService=otherService;
     }
 
     @PostConstruct
     private void onInit(){
-        System.out.println("testing post for service 2");
+        System.out.println("creating service two");
     }
 
     @PreDestroy

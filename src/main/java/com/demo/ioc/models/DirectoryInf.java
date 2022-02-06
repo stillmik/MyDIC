@@ -2,12 +2,12 @@ package com.demo.ioc.models;
 
 import com.demo.ioc.enums.DirectoryType;
 
-public class Directory {
-    private final String directory;
+public class DirectoryInf {
+    private final String directoryPath;
     private final DirectoryType directoryType;
 
-    public Directory(String directory, DirectoryType directoryType) {
-        this.directory = directory;
+    public DirectoryInf(String directoryPath, DirectoryType directoryType) {
+        this.directoryPath = directoryPath;
         this.directoryType = directoryType;
     }
 
@@ -15,7 +15,7 @@ public class Directory {
         return directoryType;
     }
 
-    public String getDirectory() {
-        return directory;
+    public String getDirectoryPath() {
+        return directoryPath;
     }
 }

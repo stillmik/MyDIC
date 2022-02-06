@@ -2,15 +2,15 @@ package com.demo.ioc.models;
 
 import java.lang.reflect.Method;
 
-public class ServiceBeanDetails<T> extends ServiceDetails<T> {
+public class ServiceBeanInf<T> extends ServiceInf<T> {
 
     private final Method originMethod;
-    private final ServiceDetails<?> rootService;
+    private final ServiceInf<?> rootService;
 
-    public ServiceBeanDetails(Class<T> beanType, Method originMethod,ServiceDetails<?> rootService) {
+    public ServiceBeanInf(Class<T> beanType, Method originMethod, ServiceInf<?> rootService) {
         this.originMethod=originMethod;
         this.rootService=rootService;
-        setBeans(new Method[0]);
+        setBeanMethods(new Method[0]);
         setServiceType(beanType);
     }
 
@@ -18,7 +18,7 @@ public class ServiceBeanDetails<T> extends ServiceDetails<T> {
         return originMethod;
     }
 
-    public ServiceDetails<?> getRootService(){
+    public ServiceInf<?> getRootService(){
         return rootService;
     }
 }

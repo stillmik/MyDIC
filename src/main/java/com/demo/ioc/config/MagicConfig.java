@@ -6,12 +6,11 @@ import com.demo.ioc.config.configurations.InstantiationConfiguration;
 public class MagicConfig {
 
     private final CustomAnnotationsConfig annotations;
-
-    private final InstantiationConfiguration instantiations;//instantiation - создание экземпляра
+    private final InstantiationConfiguration instantiationConfiguration;//instantiation - создание экземпляра
 
     public MagicConfig() {
         annotations = new CustomAnnotationsConfig(this);
-        instantiations = new InstantiationConfiguration(this);
+        instantiationConfiguration = new InstantiationConfiguration(this);
     }
 
     public CustomAnnotationsConfig annotations(){
@@ -19,7 +18,7 @@ public class MagicConfig {
     }
 
     public InstantiationConfiguration getInstantiations(){
-        return instantiations;
+        return instantiationConfiguration;
     }
 
     public MagicConfig build(){
