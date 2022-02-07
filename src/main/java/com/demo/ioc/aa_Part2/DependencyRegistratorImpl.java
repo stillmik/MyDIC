@@ -6,10 +6,10 @@ import java.util.*;
 
 public class DependencyRegistratorImpl implements DependencyRegistrator {
 
-    private final Map<Class<?>, ArrayList<Class<?>>> registratedClasses;
+    private final Map<Class<?>, ArrayList<InterfaceResolvePackich>> interfaceResolvePackich;
 
     public DependencyRegistratorImpl() {
-        this.registratedClasses = new HashMap<>();
+        this.interfaceResolvePackich = new HashMap<>();
     }
 
 
@@ -17,25 +17,224 @@ public class DependencyRegistratorImpl implements DependencyRegistrator {
     public void register(Class<?> interfaceType, Class<?> classType) throws ClassRegistrationException {
         if (registrationIsCorrect(interfaceType, classType)) {
 
-            if (!registratedClasses.containsKey(interfaceType))
-                registratedClasses.put(interfaceType, new ArrayList<>());
+            if (!interfaceResolvePackich.containsKey(interfaceType))
+                interfaceResolvePackich.put(interfaceType, new ArrayList<>());
 
-            registratedClasses.get(interfaceType).add(classType);
-        }else {
-            throw new ClassRegistrationException("Could not register class "+ classType.getName() + ". interface " + interfaceType.getName() + " is not suitable");
+            interfaceResolvePackich.get(interfaceType).add(
+                    new InterfaceResolvePackich(
+                            interfaceType,
+                            classType,
+                            ImplementationConfig.ANY,
+                            InstanceConfig.INSTANCE,
+                            DepthConfig.T_ANY)
+            );
+        } else {
+            throw new ClassRegistrationException("Could not register class " + classType.getName() + ". interface " + interfaceType.getName() + " is not suitable");
         }
-    }
-
-    @Override
-    public void print() {
-        System.out.println(registratedClasses);
     }
 
     @Override
     public void register(Class<?> interfaceType, Class<?>... classTypes) throws ClassRegistrationException {
         for (Class<?> classType : classTypes) {
-            register(interfaceType,classType);
+            register(interfaceType, classType);
         }
+    }
+
+    @Override
+    public void register(DepthConfig depthConfig, Class<?> interfaceType, Class<?> classType) throws ClassRegistrationException {
+        if (registrationIsCorrect(interfaceType, classType)) {
+
+            if (!interfaceResolvePackich.containsKey(interfaceType))
+                interfaceResolvePackich.put(interfaceType, new ArrayList<>());
+
+            interfaceResolvePackich.get(interfaceType).add(
+                    new InterfaceResolvePackich(
+                            interfaceType,
+                            classType,
+                            ImplementationConfig.ANY,
+                            InstanceConfig.INSTANCE,
+                            depthConfig)
+            );
+        } else {
+            throw new ClassRegistrationException("Could not register class " + classType.getName() + ". interface " + interfaceType.getName() + " is not suitable");
+        }
+    }
+
+    @Override
+    public void register(DepthConfig depthConfig, Class<?> interfaceType, Class<?>... classTypes) throws ClassRegistrationException {
+        for (Class<?> classType : classTypes) {
+            register(depthConfig,interfaceType, classType);
+        }
+    }
+
+    @Override
+    public void register(InstanceConfig instanceConfig, Class<?> interfaceType, Class<?> classType) throws ClassRegistrationException {
+        if (registrationIsCorrect(interfaceType, classType)) {
+
+            if (!interfaceResolvePackich.containsKey(interfaceType))
+                interfaceResolvePackich.put(interfaceType, new ArrayList<>());
+
+            interfaceResolvePackich.get(interfaceType).add(
+                    new InterfaceResolvePackich(
+                            interfaceType,
+                            classType,
+                            ImplementationConfig.ANY,
+                            instanceConfig,
+                            DepthConfig.T_ANY)
+            );
+        } else {
+            throw new ClassRegistrationException("Could not register class " + classType.getName() + ". interface " + interfaceType.getName() + " is not suitable");
+        }
+    }
+
+    @Override
+    public void register(ImplementationConfig implementationConfig, Class<?> interfaceType, Class<?> classType) throws ClassRegistrationException {
+        if (registrationIsCorrect(interfaceType, classType)) {
+
+            if (!interfaceResolvePackich.containsKey(interfaceType))
+                interfaceResolvePackich.put(interfaceType, new ArrayList<>());
+
+            interfaceResolvePackich.get(interfaceType).add(
+                    new InterfaceResolvePackich(
+                            interfaceType,
+                            classType,
+                            implementationConfig,
+                            InstanceConfig.INSTANCE,
+                            DepthConfig.T_ANY)
+            );
+        } else {
+            throw new ClassRegistrationException("Could not register class " + classType.getName() + ". interface " + interfaceType.getName() + " is not suitable");
+        }
+    }
+
+    @Override
+    public void register(ImplementationConfig implementationConfig, InstanceConfig instanceConfig, Class<?> interfaceType, Class<?> classType) throws ClassRegistrationException {
+        if (registrationIsCorrect(interfaceType, classType)) {
+
+            if (!interfaceResolvePackich.containsKey(interfaceType))
+                interfaceResolvePackich.put(interfaceType, new ArrayList<>());
+
+            interfaceResolvePackich.get(interfaceType).add(
+                    new InterfaceResolvePackich(
+                            interfaceType,
+                            classType,
+                            implementationConfig,
+                            instanceConfig,
+                            DepthConfig.T_ANY)
+            );
+        } else {
+            throw new ClassRegistrationException("Could not register class " + classType.getName() + ". interface " + interfaceType.getName() + " is not suitable");
+        }
+    }
+
+    @Override
+    public void register(InstanceConfig instanceConfig, Class<?> interfaceType, Class<?>... classTypes) throws ClassRegistrationException {
+        for (Class<?> classType : classTypes) {
+            register(instanceConfig, interfaceType, classType);
+        }
+    }
+
+    @Override
+    public void register(ImplementationConfig implementationConfig, Class<?> interfaceType, Class<?>... classTypes) throws ClassRegistrationException {
+        for (Class<?> classType : classTypes) {
+            register(implementationConfig, interfaceType, classType);
+        }
+    }
+
+    @Override
+    public void register(ImplementationConfig implementationConfig, InstanceConfig instanceConfig, Class<?> interfaceType, Class<?>... classTypes) throws ClassRegistrationException {
+        for (Class<?> classType : classTypes) {
+            register(implementationConfig, instanceConfig, interfaceType, classType);
+        }
+    }
+
+
+    @Override
+    public void register(DepthConfig depthConfig, InstanceConfig instanceConfig, Class<?> interfaceType, Class<?> classType) throws ClassRegistrationException {
+        if (registrationIsCorrect(interfaceType, classType)) {
+
+            if (!interfaceResolvePackich.containsKey(interfaceType))
+                interfaceResolvePackich.put(interfaceType, new ArrayList<>());
+
+            interfaceResolvePackich.get(interfaceType).add(
+                    new InterfaceResolvePackich(
+                            interfaceType,
+                            classType,
+                            ImplementationConfig.ANY,
+                            instanceConfig,
+                            depthConfig)
+            );
+        } else {
+            throw new ClassRegistrationException("Could not register class " + classType.getName() + ". interface " + interfaceType.getName() + " is not suitable");
+        }
+    }
+
+    @Override
+    public void register(DepthConfig depthConfig, ImplementationConfig implementationConfig, Class<?> interfaceType, Class<?> classType) throws ClassRegistrationException {
+        if (registrationIsCorrect(interfaceType, classType)) {
+
+            if (!interfaceResolvePackich.containsKey(interfaceType))
+                interfaceResolvePackich.put(interfaceType, new ArrayList<>());
+
+            interfaceResolvePackich.get(interfaceType).add(
+                    new InterfaceResolvePackich(
+                            interfaceType,
+                            classType,
+                            ImplementationConfig.ANY,
+                            InstanceConfig.INSTANCE,
+                            depthConfig)
+            );
+        } else {
+            throw new ClassRegistrationException("Could not register class " + classType.getName() + ". interface " + interfaceType.getName() + " is not suitable");
+        }
+    }
+
+    @Override
+    public void register(DepthConfig depthConfig, ImplementationConfig implementationConfig, InstanceConfig instanceConfig, Class<?> interfaceType, Class<?> classType) throws ClassRegistrationException {
+        if (registrationIsCorrect(interfaceType, classType)) {
+
+            if (!interfaceResolvePackich.containsKey(interfaceType))
+                interfaceResolvePackich.put(interfaceType, new ArrayList<>());
+
+            interfaceResolvePackich.get(interfaceType).add(
+                    new InterfaceResolvePackich(
+                            interfaceType,
+                            classType,
+                            implementationConfig,
+                            instanceConfig,
+                            depthConfig)
+            );
+        } else {
+            throw new ClassRegistrationException("Could not register class " + classType.getName() + ". interface " + interfaceType.getName() + " is not suitable");
+        }
+    }
+
+    @Override
+    public void register(DepthConfig depthConfig, InstanceConfig instanceConfig, Class<?> interfaceType, Class<?>... classTypes) throws ClassRegistrationException {
+        for (Class<?> classType : classTypes) {
+            register(depthConfig, instanceConfig, interfaceType, classType);
+        }
+    }
+
+    @Override
+    public void register(DepthConfig depthConfig, ImplementationConfig implementationConfig, Class<?> interfaceType, Class<?>... classTypes) throws ClassRegistrationException {
+        for (Class<?> classType : classTypes) {
+            register(depthConfig, implementationConfig, interfaceType, classType);
+        }
+    }
+
+    @Override
+    public void register(DepthConfig depthConfig, ImplementationConfig implementationConfig, InstanceConfig instanceConfig, Class<?> interfaceType, Class<?>... classTypes) throws ClassRegistrationException {
+        for (Class<?> classType : classTypes) {
+            register(depthConfig, implementationConfig, instanceConfig, interfaceType, classType);
+        }
+    }
+
+    @Override
+    public Map<Class<?>, ArrayList<InterfaceResolvePackich>> getInterfaceResolvePackich() {
+        if (interfaceResolvePackich.isEmpty())
+            return null;
+        return interfaceResolvePackich;
     }
 
     private boolean registrationIsCorrect(Class<?> interfaceType, Class<?> classType) {
