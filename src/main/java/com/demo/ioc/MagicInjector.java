@@ -86,6 +86,7 @@ public class MagicInjector {
 
         dependencyContainer.init(serviceDetails, objectInstanceMaker);
         runStartupMethod(startupClass);
+
     }
 
     private static void runStartupMethod(Class<?> startupClass) {
