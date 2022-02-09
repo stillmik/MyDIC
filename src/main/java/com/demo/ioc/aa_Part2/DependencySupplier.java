@@ -1,6 +1,9 @@
 package com.demo.ioc.aa_Part2;
 
+import com.demo.ioc.aa_Part2.Exceptions.ClassRegistrationException;
 import com.demo.ioc.aa_Part2.Exceptions.NotFoundException;
+import com.demo.ioc.aa_Part2.testClasses.CycleRegistrator;
+import com.demo.ioc.aa_Part2.tree.TreeNode;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
@@ -11,6 +14,13 @@ public class DependencySupplier implements Supplier {
 
     private final Map<Class<?>, ArrayList<ResolvePackich>> resolveMap;
     private final Map<Class<?>, Object> singletonObjectsMap;
+    private CycleRegistrator cycleRegistrator = new CycleRegistrator(CycleRegistrator.class,3);
+
+
+    @Override
+    public void registerCycle(Class<?> cycleClass, int maxInstances) {
+        cycleRegistrator = new CycleRegistrator(cycleClass, maxInstances);
+    }
 
     public DependencySupplier(Map<Class<?>, ArrayList<ResolvePackich>> resolveMap) {
         this.resolveMap = resolveMap;
@@ -18,58 +28,89 @@ public class DependencySupplier implements Supplier {
     }
 
     @Override
-    public Object supply(Class<?> argumentType, InstanceConfig instanceConfig) throws NotFoundException {
+    public Object[] supplyAll(Class<?> argumentType) throws NotFoundException, ClassRegistrationException {
+        return supplyAllByInterface(argumentType);
+    }
 
+    @Override
+    public Object supply(Class<?> argumentType, InstanceConfig instanceConfig) throws NotFoundException, ClassRegistrationException {
         if (instanceConfig == InstanceConfig.SINGLETON) {
             return supplyByInterfaceSingleton(argumentType);
         } else {
-            return supplyByInterfaceNotSingleton(argumentType);
+            return supplyByInterfaceNotSingleton(argumentType, ImplementationConfig.ANY);
         }
     }
 
     @Override
-    public Object supply(Class<?> argumentType) throws NotFoundException {
-
-        return supplyByInterfaceNotSingleton(argumentType);
+    public Object supply(Class<?> argumentType, ImplementationConfig implementationConfig) throws NotFoundException, ClassRegistrationException {
+        return supplyByInterfaceNotSingleton(argumentType, implementationConfig);
     }
 
-    private Object supplyByInterfaceNotSingleton(Class<?> interfaceType) throws NotFoundException {
+    @Override
+    public Object supply(Class<?> argumentType, InstanceConfig instanceConfig, ImplementationConfig implementationConfig) throws NotFoundException, ClassRegistrationException {
+        if (instanceConfig == InstanceConfig.SINGLETON) {
+            if (implementationConfig == ImplementationConfig.FIRST || implementationConfig == ImplementationConfig.SECOND) {
+                throw new NotFoundException("there is no first or second instance of singleton");
+            }
+            return supplyByInterfaceSingleton(argumentType);
+        } else {
+            return supplyByInterfaceNotSingleton(argumentType, ImplementationConfig.ANY);
+        }
+    }
 
-        ResolvePackich resolvePackich = findSuitableResolvePackich(interfaceType);
-        if(resolvePackich==null){
-            throw new NotFoundException("there are only singleton registrated instances");
+    @Override
+    public Object supply(Class<?> argumentType) throws NotFoundException, ClassRegistrationException {
+        return supplyByInterfaceNotSingleton(argumentType, ImplementationConfig.ANY);
+    }
+
+
+    private Object supplyByInterfaceNotSingleton(Class<?> interfaceType, ImplementationConfig implementationConfig) throws NotFoundException, ClassRegistrationException {
+
+        ResolvePackich resolvePackich = findSuitableResolvePackich(interfaceType, InstanceConfig.INSTANCE, implementationConfig);
+        if (resolvePackich == null) {
+            throw new NotFoundException("there is on suitable instance packich");
         }
         return createNewInstance(resolvePackich);
     }
 
-    private Object createNewInstance(ResolvePackich resolvePackich) throws NotFoundException {
+    private Object[] supplyAllByInterface(Class<?> interfaceType) throws NotFoundException, ClassRegistrationException {
 
-        Object supplyingObject = null;
-        Constructor<?> instanceConstructor = findSuitableConstructor(resolvePackich.getRegistratedClass());
-        resolvePackich.getConstructorInstances().clear();
-        for (Parameter parameter : instanceConstructor.getParameters()) {
-
-            if(resolvePackich.getInstanceConfig()==InstanceConfig.SINGLETON) {
-                resolvePackich.addConstructorInstance(supply(parameter.getType(),InstanceConfig.SINGLETON));
-            }else {
-                resolvePackich.addConstructorInstance(supply(parameter.getType()));
-            }
-        }
-
-        try {
-            supplyingObject = instanceConstructor.newInstance(resolvePackich.getConstructorInstances().toArray());
-            System.out.println(resolvePackich.getRegistratedClass().getName() + " was successfully created");
-        } catch (java.lang.InstantiationException | IllegalAccessException | InvocationTargetException e) {
-            e.printStackTrace();
-        }
-
-        return supplyingObject;
+        ArrayList<ResolvePackich> resolvePackiches = findAllSuitableResolvePackiches(interfaceType);
+        return createAllNewInstances(resolvePackiches);
     }
 
-    private Object supplyByInterfaceSingleton(Class<?> interfaceType) throws NotFoundException {
+    private Object[] createAllNewInstances(ArrayList<ResolvePackich> resolvePackiches) throws NotFoundException, ClassRegistrationException {
+
+        ArrayList<Object> supplyingObjects = new ArrayList<>();
+        Object supplyingObject = null;
+
+        for (ResolvePackich resolvePackich : resolvePackiches) {
+
+            Constructor<?> instanceConstructor = findSuitableConstructor(resolvePackich.getRegistratedClass());
+            resolvePackich.getConstructorInstances().clear();
+            for (Parameter parameter : instanceConstructor.getParameters()) {
+
+                if (resolvePackich.getInstanceConfig() != InstanceConfig.SINGLETON) {
+                    resolvePackich.addConstructorInstance(supply(parameter.getType()));
+                }
+            }
+            try {
+                supplyingObject = instanceConstructor.newInstance(resolvePackich.getConstructorInstances().toArray());
+                System.out.println(resolvePackich.getRegistratedClass().getName() + " was successfully created");
+            } catch (java.lang.InstantiationException | IllegalAccessException | InvocationTargetException e) {
+                e.printStackTrace();
+            }
+
+            supplyingObjects.add(supplyingObject);
+        }
+        return supplyingObjects.toArray();
+    }
+
+    // TODO: ImplementationConfig parameter
+    private Object supplyByInterfaceSingleton(Class<?> interfaceType) throws NotFoundException, ClassRegistrationException {
 
         Object supplyingObject;
-        ResolvePackich resolvePackich = findSuitableResolvePackichSingleton(interfaceType);
+        ResolvePackich resolvePackich = findSuitableResolvePackich(interfaceType, InstanceConfig.SINGLETON, ImplementationConfig.ANY);
 
         if (resolvePackich == null) {
             throw new NotFoundException("there is no suitable singleton packich");
@@ -84,32 +125,45 @@ public class DependencySupplier implements Supplier {
     }
 
 
+    private Object createNewInstance(ResolvePackich resolvePackich) throws NotFoundException, ClassRegistrationException {
 
-    /*private Object supplyByClass(Class<?> classType) {
-
-        Object supplyingObject = new Object();
-        ResolvePackich resolvePackich = findSuitableResolvePackichForClassType(classType);
-
-        Class<?> registratedClass = resolvePackich.getRegistratedClass();
-        Constructor<?> instanceConstructor = findSuitableConstructor(registratedClass);
-
-
-        for (Parameter parameter : instanceConstructor.getParameters()) {
-            resolvePackich.addConstructorInstances(supply(parameter.getType()));
+        if (cycleRegistrator.isReached()) {
+            return null;
         }
+        if (resolvePackich.getInterfaceType().getName().equals(cycleRegistrator.getCycleClass().getName())) {
+            cycleRegistrator.incCurrentCycle();
+            System.out.println("+++++++++++++++++++++");
+        }
+
+        Object supplyingObject = null;
+        Constructor<?> instanceConstructor = findSuitableConstructor(resolvePackich.getRegistratedClass());
+        resolvePackich.getConstructorInstances().clear();
+
+        ArrayList<Object> constructorInstances = new ArrayList<>();
+        for (Parameter parameter : instanceConstructor.getParameters()) {
+
+            if (resolvePackich.getInstanceConfig() == InstanceConfig.SINGLETON) {
+
+                Object supply = supply(parameter.getType(), InstanceConfig.SINGLETON);
+                constructorInstances.add(supply);
+                resolvePackich.addConstructorInstance(supply);
+            } else {
+
+                Object supply = supply(parameter.getType());
+                constructorInstances.add(supply);
+                resolvePackich.addConstructorInstance(supply);
+
+            }
+        }
+
         try {
-            supplyingObject = instanceConstructor.newInstance(resolvePackich.getConstructorInstances());
+            System.out.println(" res: " + resolvePackich.getRegistratedClass() + "  " + Arrays.toString(resolvePackich.getConstructorInstances().toArray()));
+            supplyingObject = instanceConstructor.newInstance(constructorInstances.toArray());
+            System.out.println(resolvePackich.getRegistratedClass().getName() + " was successfully created");
         } catch (java.lang.InstantiationException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }
         return supplyingObject;
-
-        return null;
-    }*/
-
-    private ResolvePackich findSuitableResolvePackichForClassType(Class<?> classType) {
-
-        return null;
     }
 
     private Constructor<?> findSuitableConstructor(Class<?> classType) {
@@ -128,35 +182,57 @@ public class DependencySupplier implements Supplier {
         return constructors[index];
     }
 
-    private ResolvePackich findSuitableResolvePackich(Class<?> argumentType) throws NotFoundException {
+    private ResolvePackich findSuitableResolvePackich(Class<?> argumentType, InstanceConfig instanceConfig, ImplementationConfig implementationConfig) throws NotFoundException, ClassRegistrationException {
         if (!resolveMap.containsKey(argumentType)) {
-            System.out.println(argumentType);
             throw new NotFoundException("there is no suitable interface");
         }
 
         ArrayList<ResolvePackich> resolvePackiches = resolveMap.get(argumentType);
+
+        boolean isOnlyOne = false;
         for (ResolvePackich resolvePackich : resolvePackiches) {
-            if (resolvePackich.getInstanceConfig() != InstanceConfig.SINGLETON) {
-                System.out.println("resolvePackich: " + resolvePackich.getInstanceConfig() + " " +resolvePackich.getRegistratedClass().getName());
-                return resolvePackich;
+            if (isOnlyOne && resolvePackich.getInstanceConfig() == InstanceConfig.SINGLETON) {
+                throw new ClassRegistrationException("there are more than one registrated singleton class for this interface");
+            }
+            if (resolvePackich.getInstanceConfig() == InstanceConfig.SINGLETON) {
+                isOnlyOne = true;
+            }
+        }
+
+        for (ResolvePackich resolvePackich : resolvePackiches) {
+
+            System.out.println("config: " + resolvePackich.getImplementationConfig() + " " + resolvePackich.getRegistratedClass());
+
+            if (implementationConfig == ImplementationConfig.ANY) {
+                if (resolvePackich.getImplementationConfig() == ImplementationConfig.FIRST || resolvePackich.getImplementationConfig() == ImplementationConfig.SECOND || resolvePackich.getImplementationConfig() == ImplementationConfig.ANY) {
+                    if (resolvePackich.getInstanceConfig() == instanceConfig) {
+                        return resolvePackich;
+                    }
+                }
+            } else if (implementationConfig == ImplementationConfig.FIRST) {
+                if (resolvePackich.getImplementationConfig() == implementationConfig) {
+                    if (resolvePackich.getInstanceConfig() == instanceConfig) {
+                        return resolvePackich;
+                    }
+                }
+            } else if (implementationConfig == ImplementationConfig.SECOND) {
+                if (resolvePackich.getImplementationConfig() == implementationConfig) {
+                    if (resolvePackich.getInstanceConfig() == instanceConfig) {
+                        return resolvePackich;
+                    }
+                }
             }
         }
         return null;
     }
 
-    private ResolvePackich findSuitableResolvePackichSingleton(Class<?> argumentType) throws NotFoundException {
+    private ArrayList<ResolvePackich> findAllSuitableResolvePackiches(Class<?> argumentType) throws NotFoundException {
+
         if (!resolveMap.containsKey(argumentType)) {
             throw new NotFoundException("there is no suitable interface");
         }
 
-        ArrayList<ResolvePackich> resolvePackiches = resolveMap.get(argumentType);
-
-        for (ResolvePackich resolvePackich : resolvePackiches) {
-            if (resolvePackich.getInstanceConfig() == InstanceConfig.SINGLETON) {
-                return resolvePackich;
-            }
-        }
-        return null;
+        return resolveMap.get(argumentType);
     }
 
     @Override
@@ -167,9 +243,5 @@ public class DependencySupplier implements Supplier {
     private void print2(Class<?> interfaceType, ArrayList<ResolvePackich> interfaceResolveContents) {
         System.out.print("key: " + interfaceType + " | ");
         interfaceResolveContents.forEach((v) -> System.out.printf("value: {%s, %s, %s, %s, %s} \n", v.getInterfaceType(), v.getRegistratedClass(), v.getImplementationConfig(), v.getInstanceConfig(), v.getDepthConfig()));
-    }
-
-    public Map<Class<?>, Object> getSingletonObjectsMap() {
-        return singletonObjectsMap;
     }
 }

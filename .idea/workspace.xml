@@ -2,30 +2,53 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78e68d32-363e-4723-89f4-b4fcfb9a31d9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/SuperClass.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/SuperInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/Child.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/ChildInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/CycleRegistrator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/Jackson.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/JacksonInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/Michael.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/MichaelInerface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/NoDependencyClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/NoDependencyClass2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/SimpleDependencyClass2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/SimpleDependencyInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/TrashClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/TrashInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/TreeDependency.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/TreeDependency2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/TreeDependencyInterface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/tree/TreeNode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/tree/TreeTraverser.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/Tests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dictionaries/User.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/User.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/DependencyRegistrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/DependencyRegistrator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/DependencyRegistratorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/DependencyRegistratorImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/DependencySupplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/DependencySupplier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/Exceptions/InterfaceNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/Exceptions/NotFoundException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/ImplementationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/ImplementationConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/InterfaceResolvePackich.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/ResolvePackich.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/SuperInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/SuperInjector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/Supplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/Supplier.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/aa_Tests/Testing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/aa_Tests/Testing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/A.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/A.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/FirstClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/FirstClass.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/DependencyRegistrator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/DependencyRegistrator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/DependencyRegistratorImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/DependencyRegistratorImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/A.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/DependencyA.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/B.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/DependencyB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/C.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/C.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/ClassInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/NoDependencyInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/FirstClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/SimpleDependencyClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/LetterInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/DependencyInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/SecondClass.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/ThirdClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/ThirdClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/DependencySupplier.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/DependencySupplier.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/InterfaceResolvePackich.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/ImplementationConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/ImplementationConfig.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/SuperInjector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/SuperInjector.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/Supplier.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/Supplier.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/aa_Tests/Testing.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/aa_Tests/Testing.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/testClasses/A.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/testClasses/A.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/testClasses/FirstClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/testClasses/FirstClass.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/testClasses/A.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/testClasses/B.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/testClasses/C.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/testClasses/C.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/testClasses/ClassInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/testClasses/FirstClass.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/testClasses/LetterInterface.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/testClasses/SecondClass.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/testClasses/ThirdClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/testClasses/ThirdClass.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -73,6 +96,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.demo.ioc.aa_Part2.testClasses" />
       <recent name="com.demo.ioc.aa_Part2" />
     </key>
   </component>
@@ -88,37 +112,73 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.SuperInjector">
-    <configuration name="MagicInjector" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.demo.ioc.MagicInjector" />
+  <component name="RunManager" selected="TestNG.Tests.CycleDependency">
+    <configuration name="Tests" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="magicinjector" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.demo.ioc.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Tests" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SuperInjector" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.demo.ioc.aa_Part2.SuperInjector" />
+    <configuration name="Tests.CycleDependency" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="magicinjector" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.demo.ioc.aa_Part2.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Tests" />
+      <option name="METHOD_NAME" value="CycleDependency" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tests.SimpleDependency" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="magicinjector" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Tests" />
+      <option name="METHOD_NAME" value="SimpleDependency" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tests.treeDependencyAndTrash" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="magicinjector" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Tests" />
+      <option name="METHOD_NAME" value="treeDependencyAndTrash" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Tests.zeroDependencies" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="magicinjector" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="Tests" />
+      <option name="METHOD_NAME" value="zeroDependencies" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.SuperInjector" />
-        <item itemvalue="Application.MagicInjector" />
+        <item itemvalue="TestNG.Tests.CycleDependency" />
+        <item itemvalue="TestNG.Tests" />
+        <item itemvalue="TestNG.Tests.zeroDependencies" />
+        <item itemvalue="TestNG.Tests.treeDependencyAndTrash" />
+        <item itemvalue="TestNG.Tests.SimpleDependency" />
       </list>
     </recent_temporary>
   </component>

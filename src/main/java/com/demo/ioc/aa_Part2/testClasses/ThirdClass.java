@@ -1,4 +1,4 @@
 package com.demo.ioc.aa_Part2.testClasses;
 
-public class ThirdClass implements ClassInterface {
+public class ThirdClass implements NoDependencyInterface {
 }
