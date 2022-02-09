@@ -6,10 +6,10 @@ import java.util.*;
 
 public class DependencyRegistratorImpl implements DependencyRegistrator {
 
-    private final Map<Class<?>, ArrayList<InterfaceResolvePackich>> interfaceResolvePackich;
+    private Map<Class<?>, ArrayList<ResolvePackich>> resolveMap;
 
     public DependencyRegistratorImpl() {
-        this.interfaceResolvePackich = new HashMap<>();
+        this.resolveMap = new HashMap<>();
     }
 
 
@@ -17,11 +17,11 @@ public class DependencyRegistratorImpl implements DependencyRegistrator {
     public void register(Class<?> interfaceType, Class<?> classType) throws ClassRegistrationException {
         if (registrationIsCorrect(interfaceType, classType)) {
 
-            if (!interfaceResolvePackich.containsKey(interfaceType))
-                interfaceResolvePackich.put(interfaceType, new ArrayList<>());
+            if (!resolveMap.containsKey(interfaceType))
+                resolveMap.put(interfaceType, new ArrayList<>());
 
-            interfaceResolvePackich.get(interfaceType).add(
-                    new InterfaceResolvePackich(
+            resolveMap.get(interfaceType).add(
+                    new ResolvePackich(
                             interfaceType,
                             classType,
                             ImplementationConfig.ANY,
@@ -44,11 +44,11 @@ public class DependencyRegistratorImpl implements DependencyRegistrator {
     public void register(DepthConfig depthConfig, Class<?> interfaceType, Class<?> classType) throws ClassRegistrationException {
         if (registrationIsCorrect(interfaceType, classType)) {
 
-            if (!interfaceResolvePackich.containsKey(interfaceType))
-                interfaceResolvePackich.put(interfaceType, new ArrayList<>());
+            if (!resolveMap.containsKey(interfaceType))
+                resolveMap.put(interfaceType, new ArrayList<>());
 
-            interfaceResolvePackich.get(interfaceType).add(
-                    new InterfaceResolvePackich(
+            resolveMap.get(interfaceType).add(
+                    new ResolvePackich(
                             interfaceType,
                             classType,
                             ImplementationConfig.ANY,
@@ -71,11 +71,11 @@ public class DependencyRegistratorImpl implements DependencyRegistrator {
     public void register(InstanceConfig instanceConfig, Class<?> interfaceType, Class<?> classType) throws ClassRegistrationException {
         if (registrationIsCorrect(interfaceType, classType)) {
 
-            if (!interfaceResolvePackich.containsKey(interfaceType))
-                interfaceResolvePackich.put(interfaceType, new ArrayList<>());
+            if (!resolveMap.containsKey(interfaceType))
+                resolveMap.put(interfaceType, new ArrayList<>());
 
-            interfaceResolvePackich.get(interfaceType).add(
-                    new InterfaceResolvePackich(
+            resolveMap.get(interfaceType).add(
+                    new ResolvePackich(
                             interfaceType,
                             classType,
                             ImplementationConfig.ANY,
@@ -91,11 +91,11 @@ public class DependencyRegistratorImpl implements DependencyRegistrator {
     public void register(ImplementationConfig implementationConfig, Class<?> interfaceType, Class<?> classType) throws ClassRegistrationException {
         if (registrationIsCorrect(interfaceType, classType)) {
 
-            if (!interfaceResolvePackich.containsKey(interfaceType))
-                interfaceResolvePackich.put(interfaceType, new ArrayList<>());
+            if (!resolveMap.containsKey(interfaceType))
+                resolveMap.put(interfaceType, new ArrayList<>());
 
-            interfaceResolvePackich.get(interfaceType).add(
-                    new InterfaceResolvePackich(
+            resolveMap.get(interfaceType).add(
+                    new ResolvePackich(
                             interfaceType,
                             classType,
                             implementationConfig,
@@ -111,11 +111,11 @@ public class DependencyRegistratorImpl implements DependencyRegistrator {
     public void register(ImplementationConfig implementationConfig, InstanceConfig instanceConfig, Class<?> interfaceType, Class<?> classType) throws ClassRegistrationException {
         if (registrationIsCorrect(interfaceType, classType)) {
 
-            if (!interfaceResolvePackich.containsKey(interfaceType))
-                interfaceResolvePackich.put(interfaceType, new ArrayList<>());
+            if (!resolveMap.containsKey(interfaceType))
+                resolveMap.put(interfaceType, new ArrayList<>());
 
-            interfaceResolvePackich.get(interfaceType).add(
-                    new InterfaceResolvePackich(
+            resolveMap.get(interfaceType).add(
+                    new ResolvePackich(
                             interfaceType,
                             classType,
                             implementationConfig,
@@ -153,11 +153,11 @@ public class DependencyRegistratorImpl implements DependencyRegistrator {
     public void register(DepthConfig depthConfig, InstanceConfig instanceConfig, Class<?> interfaceType, Class<?> classType) throws ClassRegistrationException {
         if (registrationIsCorrect(interfaceType, classType)) {
 
-            if (!interfaceResolvePackich.containsKey(interfaceType))
-                interfaceResolvePackich.put(interfaceType, new ArrayList<>());
+            if (!resolveMap.containsKey(interfaceType))
+                resolveMap.put(interfaceType, new ArrayList<>());
 
-            interfaceResolvePackich.get(interfaceType).add(
-                    new InterfaceResolvePackich(
+            resolveMap.get(interfaceType).add(
+                    new ResolvePackich(
                             interfaceType,
                             classType,
                             ImplementationConfig.ANY,
@@ -173,11 +173,11 @@ public class DependencyRegistratorImpl implements DependencyRegistrator {
     public void register(DepthConfig depthConfig, ImplementationConfig implementationConfig, Class<?> interfaceType, Class<?> classType) throws ClassRegistrationException {
         if (registrationIsCorrect(interfaceType, classType)) {
 
-            if (!interfaceResolvePackich.containsKey(interfaceType))
-                interfaceResolvePackich.put(interfaceType, new ArrayList<>());
+            if (!resolveMap.containsKey(interfaceType))
+                resolveMap.put(interfaceType, new ArrayList<>());
 
-            interfaceResolvePackich.get(interfaceType).add(
-                    new InterfaceResolvePackich(
+            resolveMap.get(interfaceType).add(
+                    new ResolvePackich(
                             interfaceType,
                             classType,
                             ImplementationConfig.ANY,
@@ -193,11 +193,11 @@ public class DependencyRegistratorImpl implements DependencyRegistrator {
     public void register(DepthConfig depthConfig, ImplementationConfig implementationConfig, InstanceConfig instanceConfig, Class<?> interfaceType, Class<?> classType) throws ClassRegistrationException {
         if (registrationIsCorrect(interfaceType, classType)) {
 
-            if (!interfaceResolvePackich.containsKey(interfaceType))
-                interfaceResolvePackich.put(interfaceType, new ArrayList<>());
+            if (!resolveMap.containsKey(interfaceType))
+                resolveMap.put(interfaceType, new ArrayList<>());
 
-            interfaceResolvePackich.get(interfaceType).add(
-                    new InterfaceResolvePackich(
+            resolveMap.get(interfaceType).add(
+                    new ResolvePackich(
                             interfaceType,
                             classType,
                             implementationConfig,
@@ -231,10 +231,10 @@ public class DependencyRegistratorImpl implements DependencyRegistrator {
     }
 
     @Override
-    public Map<Class<?>, ArrayList<InterfaceResolvePackich>> getInterfaceResolvePackich() {
-        if (interfaceResolvePackich.isEmpty())
+    public Map<Class<?>, ArrayList<ResolvePackich>> getResolveMap() {
+        if (resolveMap.isEmpty())
             return null;
-        return interfaceResolvePackich;
+        return resolveMap;
     }
 
     private boolean registrationIsCorrect(Class<?> interfaceType, Class<?> classType) {

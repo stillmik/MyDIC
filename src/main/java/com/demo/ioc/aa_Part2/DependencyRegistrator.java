@@ -41,6 +41,6 @@ public interface DependencyRegistrator {
 
     void register(DepthConfig depthConfig,ImplementationConfig implementationConfig, InstanceConfig second, Class<?> interfaceType, Class<?>... classTypes) throws ClassRegistrationException;
 
-    Map<Class<?>, ArrayList<InterfaceResolvePackich>> getInterfaceResolvePackich();
+    Map<Class<?>, ArrayList<ResolvePackich>> getResolveMap();
 
 }

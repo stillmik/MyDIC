@@ -2,26 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78e68d32-363e-4723-89f4-b4fcfb9a31d9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/DepthConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/Exceptions/InstantiationException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/Exceptions/InterfaceNotFoundException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/ImplementationConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/InstanceConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/InterfaceResolvePackich.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/aa_Tests/Testing.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/SuperClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/SuperInterface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dictionaries/User.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/User.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/DependencyRegistrator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/DependencyRegistrator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/DependencyRegistratorImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/DependencyRegistratorImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/DependencySupplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/DependencySupplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/Exceptions/InterfaceNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/Exceptions/NotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/ImplementationConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/ImplementationConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/InterfaceResolvePackich.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/ResolvePackich.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/SuperInjector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/SuperInjector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/Supplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/Supplier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/aa_Tests/Testing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/aa_Tests/Testing.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/A.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/A.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/FirstClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/demo/ioc/aa_Part2/testClasses/FirstClass.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/DependencyRegistrator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/DependencyRegistrator.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/DependencyRegistratorImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/DependencyRegistratorImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/DependencySupplier.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/DependencySupplier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/InterfaceResolvePackich.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/SuperInjector.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/SuperInjector.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/Supplier.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/Supplier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/aa_Tests/Testing.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/aa_Tests/Testing.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/testClasses/A.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/testClasses/A.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/testClasses/FirstClass.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/demo/ioc/aa_Part2/testClasses/FirstClass.class" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -33,8 +37,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="AnnotationType" />
-        <option value="Interface" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>

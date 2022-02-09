@@ -3,21 +3,22 @@ package com.demo.ioc.aa_Part2;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InterfaceResolvePackich {
+public class ResolvePackich {
     private Class<?> interfaceType;
-    private List<Class<?>> registratedClasses;
+    private Class<?> registratedClass;
+    private List<Object> constructorInstances;
     private ImplementationConfig implementationConfig;
     private InstanceConfig instanceConfig;
     private DepthConfig depthConfig;
 
 
-    public InterfaceResolvePackich(Class<?> interfaceType, Class<?> classType, ImplementationConfig implementationConfig, InstanceConfig instanceConfig, DepthConfig depthConfig) {
-        registratedClasses = new ArrayList<>();
-        registratedClasses.add(classType);
+    public ResolvePackich(Class<?> interfaceType, Class<?> classType, ImplementationConfig implementationConfig, InstanceConfig instanceConfig, DepthConfig depthConfig) {
+        registratedClass = classType;
         this.interfaceType = interfaceType;
         this.implementationConfig = implementationConfig;
         this.instanceConfig = instanceConfig;
         this.depthConfig = depthConfig;
+        constructorInstances = new ArrayList<>();
     }
 
     public void setInterfaceType(Class<?> interfaceType) {
@@ -32,8 +33,8 @@ public class InterfaceResolvePackich {
         this.instanceConfig = instanceConfig;
     }
 
-    public void addRegistratedClass(Class<?> registratedClass) {
-        registratedClasses.add(registratedClass);
+    public void setRegistratedClass(Class<?> registratedClass) {
+        this.registratedClass = registratedClass;
     }
 
 
@@ -45,8 +46,8 @@ public class InterfaceResolvePackich {
         return interfaceType;
     }
 
-    public List<Class<?>> getRegistratedClasses() {
-        return registratedClasses;
+    public Class<?> getRegistratedClass() {
+        return registratedClass;
     }
 
     public ImplementationConfig getImplementationConfig() {
@@ -59,5 +60,13 @@ public class InterfaceResolvePackich {
 
     public DepthConfig getDepthConfig() {
         return depthConfig;
+    }
+
+    public void addConstructorInstance(Object param) {
+        constructorInstances.add(param);
+    }
+
+    public List<Object> getConstructorInstances() {
+        return constructorInstances;
     }
 }
